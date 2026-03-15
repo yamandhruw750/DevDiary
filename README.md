@@ -4,6 +4,8 @@
 
 This project is built with a modern full-stack JavaScript architecture using **React** for the frontend and **Appwrite** as the backend service. The UI is styled with **Tailwind CSS** and enhanced with **shadcn/ui** components to provide a clean, responsive, and accessible user interface.
 
+This project is being developed while following the “Chai aur React” playlist from the Chai aur Code YouTube channel, as part of my learning journey in building full-stack React applications.
+
 ## 🚀 Features
 
 * ✍️ Create, edit, and delete blog posts
@@ -18,6 +20,11 @@ This project is built with a modern full-stack JavaScript architecture using **R
 * **Backend:** Appwrite
 * **Styling:** Tailwind CSS
 * **UI Components:** shadcn/ui
+
+## 📚 Learning Source
+
+This project is inspired by and built while following the Chai aur React playlist from the Chai aur Code YouTube channel.
+link :- https://youtube.com/playlist?list=PLu71SKxNbfoDqgPchmvIsL4hTnJIrtige&si=YXkpbBqZnfW84PvO
 
 ## 📌 Purpose
 
