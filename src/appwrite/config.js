@@ -94,7 +94,7 @@ export class Service {
   async uploadFile(file) {
     try {
       return await this.bucket.createFile({
-        bucketId: config.appwriteBacketId,
+        bucketId: config.appwriteBucketId,
         fileId: ID.unique(),
         file: file,
       });
@@ -107,7 +107,7 @@ export class Service {
   async deleteFile(fileId) {
     try {
       await this.bucket.deleteFile({
-        bucketId: config.appwriteBacketId,
+        bucketId: config.appwriteBucketId,
         filedId: fileId,
       });
       return true;
@@ -118,14 +118,14 @@ export class Service {
 
   getFilePreview(fileId) {
     return this.bucket.getFilePreview({
-      bucketId: config.appwriteBacketId,
+      bucketId: config.appwriteBucketId,
       fileId: fileId,
     });
   }
 
   getFileDownload(filedId) {
     return this.bucket.getFileDownload({
-      bucketId: config.appwriteBacketId,
+      bucketId: config.appwriteBucketId,
       fileId: filedId,
     });
   }
