@@ -11,7 +11,11 @@ function LogoutBtn() {
     });
   };
 
-  return <Button onClick={logoutHandler} variant="destructive">Logout</Button>;
+  return (
+    <Button onClick={logoutHandler} variant="destructive">
+      Logout
+    </Button>
+  );
 }
 
 export default LogoutBtn;

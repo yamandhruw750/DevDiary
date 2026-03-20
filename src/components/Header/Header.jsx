@@ -51,7 +51,7 @@ function Header() {
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name} className="px-1">
-                  <Button onClick={() => navigate} variant={item.variant}>
+                  <Button onClick={() => navigate(item.slug)} variant={item.variant}>
                     {item.name}
                   </Button>
                 </li>

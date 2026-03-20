@@ -12,7 +12,7 @@ import { Field } from "./ui/field";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { register, handlSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
 
   const login = async (data) => {
@@ -30,7 +30,7 @@ function Login() {
   };
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form onSubmit={handlSubmit(login)}>
+      <form onSubmit={handleSubmit(login)}>
         <Card className="w-sm shadow-2xl p-16">
           <CardHeader>
             <CardTitle className="text-2xl text-center pb-8">Login</CardTitle>

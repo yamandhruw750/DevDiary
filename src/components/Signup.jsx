@@ -11,9 +11,9 @@ import { useForm } from "react-hook-form";
 
 function Signup() {
   const navigate = useNavigate();
-  const [error, setError] = useState("Fuck you");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm;
+  const { register, handleSubmit } = useForm();
 
   const create = async () => {
     setError("");
@@ -63,13 +63,16 @@ function Signup() {
             </Field>
             <Field>
               <Input
+                type="password"
                 placeholder="Enter your password"
                 {...register("password", {
                   required: true,
                 })}
               />
             </Field>
-            <Button type="submit">Create Account</Button>
+            <Button type="submit" className="w-full">
+              Create Account
+            </Button>
             <p className="text-center">
               Already have an account?
               <Link to={"/login"}>

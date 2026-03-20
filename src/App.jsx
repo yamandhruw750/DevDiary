@@ -4,29 +4,39 @@ import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
 import { Header, Footer } from "./components/index";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    authService
-      .getCurrentUser()
-      .then((userData) => {
+    const checkUser = async () => {
+      try {
+        const userData = await authService.getCurrentUser();
+
         if (userData) {
           dispatch(login({ userData }));
         } else {
           dispatch(logout());
         }
-      })
-      .finally(() => setLoading(false));
-  }, []);
+      } catch (error) {
+        console.log("Error fetching user:", error);
+        dispatch(logout());
+      } finally {
+        setLoading(false);
+      }
+    };
+    checkUser();
+  }, [dispatch]);
 
   return !loading ? (
     <div className="min-h-screen flex-wrap content-between">
       <div>
         <Header />
-        <main>{/* <Outlet/> */}</main>
+        <main>
+          <Outlet />
+        </main>
         <Footer />
       </div>
     </div>
