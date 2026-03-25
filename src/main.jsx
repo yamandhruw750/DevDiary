@@ -16,6 +16,8 @@ import Post from "./pages/Post";
 
 import AllPosts from "./pages/AllPost";
 
+import { ThemeProvider } from "./components/themeProvider";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -79,7 +81,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </Provider>
   </StrictMode>,
 );
