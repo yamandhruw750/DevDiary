@@ -21,11 +21,11 @@ export class Service {
         tableId: config.appwriteTableId,
         slug,
         data: {
-          title,
-          content,
-          featuredImage,
-          status,
-          userId,
+          title: title,
+          content: content,
+          featuredImage: featuredImage,
+          status: status,
+          userId: userId,
         },
       });
     } catch (error) {
@@ -40,10 +40,10 @@ export class Service {
         tableId: config.appwriteTableId,
         slug,
         data: {
-          title,
-          content,
-          featuredImage,
-          status,
+          title: title,
+          content: content,
+          featuredImage: featuredImage,
+          status: status,
         },
       });
     } catch (error) {

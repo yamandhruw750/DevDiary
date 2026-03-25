@@ -12,29 +12,30 @@ export class AuthService {
     this.account = new Account(this.client);
   }
 
-  async createAccount() {
+  async createAccount({ email, password }) {
     try {
       const user = await this.account.create({
         userId: ID.unique(),
-        email: "email@example.com",
-        password: "<Password>",
+        email: email,
+        password: password,
       });
       if (user) {
         //call another method
         this.loginAccount();
       } else {
-        return null;
+        throw new Error("User Creation failed");
       }
     } catch (error) {
+      console.error("Error creating account:", error);
       throw error;
     }
   }
 
-  async loginAccount() {
+  async loginAccount({ email, password }) {
     try {
       return await this.account.createEmailPasswordSession({
-        email: "email@example.com",
-        password: "password",
+        email: email,
+        password: password,
       });
     } catch (error) {
       throw error;

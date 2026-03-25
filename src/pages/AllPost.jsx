@@ -3,20 +3,21 @@ import service from "@/appwrite/config";
 import { PostCard, Container } from "@/components/index";
 
 function AllPost() {
-  const [post, setPost] = useState([]);
-  useEffect(() => {}, []);
-  service.getPosts(
-    [].then((posts) => {
+  const [posts, setPost] = useState([]);
+
+  useEffect(() => {
+    service.getPosts().then((posts) => {
       if (posts) {
         setPost(posts.documents);
       }
-    }),
-  );
+    });
+  }, []);
+
   return (
     <div>
       <Container>
         <div className="flex flex-wrap">
-          {post.map((post) => (
+          {posts.map((post) => (
             <div key={post.$id}>
               <PostCard post={post} />
             </div>
