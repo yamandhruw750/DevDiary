@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/index";
 import service from "@/appwrite/config";
 import { Container, PostCard } from "@/components/index";
+import { useNavigate } from "react-router-dom";
+
 function Home() {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     service.getPosts().then((post) => {
@@ -16,13 +20,50 @@ function Home() {
     return (
       <div className="w-full py-8 mt-4 text-center">
         <Container>
-          <div className="flex flex-wrap">
-            <div className="p-2 w-full">
-              <h1 className="text-2xl font-bold hover:text-gray-500">
-                Login to read Posts
+          <section className="w-full min-h-[80vh] flex items-center justify-center px-6">
+            <div className="max-w-4xl text-center space-y-6">
+              {/* Badge */}
+              <div className="absolute inset-0 bg-linear-to-r from-blue-500/10 to-purple-500/10 blur-3xl -z-10">
+                🚀 DevLogs — Share Your Journey
+              </div>
+
+              {/* Heading */}
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                Document Your{" "}
+                <span className="bg-linear-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+                  Developer Journey
+                </span>
               </h1>
+
+              {/* Subtitle */}
+              <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+                Write blogs, share your learnings, and build your public dev
+                diary. Track your progress and inspire others.
+              </p>
+
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                <Button size="lg" onClick={() => navigate("/add-post")}>
+                  Start Writing
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => navigate("/")}
+                >
+                  Explore Posts
+                </Button>
+              </div>
+
+              {/* Optional Code-style line */}
+              <div className="mt-6 text-sm text-muted-foreground font-mono">
+                <span className="text-green-500">const</span>{" "}
+                <span className="text-blue-400">dev</span> ={" "}
+                <span className="text-yellow-400">"keep building 🚀"</span>;
+              </div>
             </div>
-          </div>
+          </section>
         </Container>
       </div>
     );
