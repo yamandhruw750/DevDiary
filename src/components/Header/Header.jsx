@@ -6,6 +6,7 @@ import { ModeToggle } from "../themetoggle";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
+  const userData = useSelector((state) => state.auth.userData);
   const navigate = useNavigate();
 
   const navItems = [
@@ -61,14 +62,23 @@ function Header() {
                 </li>
               ) : null,
             )}
-            <li>
-              <ModeToggle />
-            </li>
+            {authStatus && (
+              <li className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm">
+                  {userData?.name?.charAt(0).toUpperCase()}
+                </div>
+
+                <span className="text-sm">{userData?.name}</span>
+              </li>
+            )}
             {authStatus && (
               <li>
                 <LogoutBtn />
               </li>
             )}
+            <li className="px-1">
+              <ModeToggle />
+            </li>
           </ul>
         </nav>
       </Container>

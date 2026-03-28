@@ -19,6 +19,7 @@ function Signup() {
     setError("");
     try {
       const account = await authService.createAccount({
+        name: data.name,
         email: data.email,
         password: data.password,
       });
