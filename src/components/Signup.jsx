@@ -18,14 +18,21 @@ function Signup() {
   const create = async (data) => {
     setError("");
     try {
-      const account = await authService.createAccount(data);
+      const account = await authService.createAccount({
+        email: data.email,
+        password: data.password,
+      });
       if (account) {
-        const currentUser = await authService.getCurrentUser();
-        if (currentUser) dispatch(login(userData));
+        dispatch(login(account));
         navigate("/");
       }
     } catch (error) {
-      setError(error.message);
+      if (error.message.includes("already exists")) {
+        setError("Email already registered. Please login instead. ");
+        navigate("/login");
+      } else {
+        setError(error.message);
+      }
     }
   };
 
