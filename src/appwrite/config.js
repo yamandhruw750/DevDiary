@@ -19,7 +19,7 @@ export class Service {
       return await this.tablesDB.createRow({
         databaseId: config.appwriteDataBaseId,
         tableId: config.appwriteTableId,
-        slug,
+        rowId: slug,
         data: {
           title: title,
           content: content,
@@ -66,15 +66,18 @@ export class Service {
   }
 
   async getPost(slug) {
+    if (!slug) {
+      throw new Error("Slug is required to fetch post");
+    }
     try {
-      return await this.tablesDB.getRow({
+      const response = await this.tablesDB.getRow({
         databaseId: config.appwriteDataBaseId,
         tableId: config.appwriteTableId,
         slug,
       });
+      return response || null;
     } catch (error) {
-      console.log("Appwrite serive :: getPost :: error", error);
-      return false;
+      console.log("Appwrite service :: getPost :: error", error);
     }
   }
 

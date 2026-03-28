@@ -1,4 +1,3 @@
-import React from "react";
 import config from "@/config/conf";
 import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";

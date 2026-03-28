@@ -20,7 +20,7 @@ export default function PostForm({ post }) {
     });
 
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.userData);
+  const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
     if (post) {
@@ -44,12 +44,15 @@ export default function PostForm({ post }) {
       const file = await service.uploadFile(data.image[0]);
 
       if (file) {
-        const fileId = file.$id;
-        data.featuredImage = fileId;
+        const fileId = file ? file.$id : null;
+
         const dbPost = await service.createPost({
           ...data,
+          featuredImage: fileId,
           userId: userData.$id,
         });
+
+        console.log(dbPost);
 
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
@@ -125,7 +128,10 @@ export default function PostForm({ post }) {
           </div>
         )}
         <Select
-          options={["active", "inactive"]}
+          options={[
+            { label: "active", value: true },
+            { label: "inactive", value: false },
+          ]}
           label="Status"
           className="mb-4"
           {...register("status", { required: true })}
