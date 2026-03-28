@@ -44,7 +44,7 @@ function Login() {
     }
   };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit(login)}>
         <Card className="w-sm shadow-2xl p-16">
           <CardHeader>

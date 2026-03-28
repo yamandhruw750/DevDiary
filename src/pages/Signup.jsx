@@ -1,11 +1,11 @@
-import React from "react";
+import AuthLayout from "@/components/AuthLayout";
 import { Signup as SignupComponent } from "@/components/index";
 
 function Signup() {
   return (
-    <div>
+    <AuthLayout>
       <SignupComponent />
-    </div>
+    </AuthLayout>
   );
 }
 

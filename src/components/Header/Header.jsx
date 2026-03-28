@@ -26,7 +26,7 @@ function Header() {
       name: "Signup",
       slug: "/signup",
       active: !authStatus,
-      variant: "secondary",
+      variant: "outline",
     },
     {
       name: "All Posts",
