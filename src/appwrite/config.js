@@ -81,16 +81,16 @@ export class Service {
     }
   }
 
-  async getPosts(queries = [Query.equal("status", true)]) {
+  async getPosts(queries = []) {
     try {
       return await this.tablesDB.listRows({
         databaseId: config.appwriteDataBaseId,
         tableId: config.appwriteTableId,
-        queries: queries,
+        queries: [Query.equal("status", true), ...queries],
       });
     } catch (error) {
       console.log("Appwrite serive :: getPosts :: error", error);
-      return false;
+      return null;
     }
   }
 

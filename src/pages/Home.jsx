@@ -1,86 +1,77 @@
 import { useEffect, useState } from "react";
-import { Button } from "@/components/index";
 import service from "@/appwrite/config";
-import { Container, PostCard } from "@/components/index";
+import { Container, PostCard, Hero } from "@/components/index";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import PostCardSkeleton from "@/components/Skeleton";
 
 function Home() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const authStatus = useSelector((state) => state.auth.status);
 
   useEffect(() => {
-    service.getPosts().then((post) => {
-      if (post) {
-        setPosts(post.documents);
-      }
-    });
-  }, []);
+    if (authStatus) {
+      service.getPosts().then((post) => {
+        if (post) {
+          setPosts(post.documents);
+        }
+        setLoading(false);
+      });
+    } else {
+      setLoading(false);
+    }
+  }, [authStatus]);
 
-  if (posts?.length === 0) {
+  //It is just a loading skeleton
+  if (loading) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
+      <div className="w-full py-8">
         <Container>
-          <section className="w-full min-h-[80vh] flex items-center justify-center px-6">
-            <div className="max-w-4xl text-center space-y-6">
-              {/* Badge */}
-              <div className="absolute inset-0 bg-linear-to-r from-blue-500/10 to-purple-500/10 blur-3xl -z-10">
-                🚀 DevLogs — Share Your Journey
-              </div>
-
-              {/* Heading */}
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Document Your{" "}
-                <span className="bg-linear-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-                  Developer Journey
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
-                Write blogs, share your learnings, and build your public dev
-                diary. Track your progress and inspire others.
-              </p>
-
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
-                <Button size="lg" onClick={() => navigate("/add-post")}>
-                  Start Writing
-                </Button>
-
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => navigate("/")}
-                >
-                  Explore Posts
-                </Button>
-              </div>
-
-              {/* Optional Code-style line */}
-              <div className="mt-6 text-sm text-muted-foreground font-mono">
-                <span className="text-green-500">const</span>{" "}
-                <span className="text-blue-400">dev</span> ={" "}
-                <span className="text-yellow-400">"keep building 🚀"</span>;
-              </div>
-            </div>
-          </section>
+          <div className="flex flex-wrap">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <PostCardSkeleton key={index} />
+            ))}
+          </div>
         </Container>
       </div>
     );
   }
-  return (
-    <div className="w-full py-8">
-      <Container>
-        <div className="flex">
-          {posts?.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
-              <PostCard {...post} />
-            </div>
-          ))}
-        </div>
-      </Container>
-    </div>
-  );
+  //It runs when not logged in !!
+  if (!authStatus) {
+    return <Hero />;
+  }
+
+  //It runs when logged in and no posts are there !!
+  if (authStatus) {
+    return (
+      <div className="w-full min-h-[60vh] flex items-center justify-center text-center">
+        <Container>
+          <h2 className="text-xl font-semibold">
+            No posts yet. Start writing your first post 🚀
+          </h2>
+        </Container>
+      </div>
+    );
+  }
+
+  //It runs when logged in and posts are there !!
+  if (!posts?.length === 0) {
+    return (
+      <div className="w-full min-h-[60vh] flex items-center justify-center text-center">
+        <Container>
+          <div className="flex">
+            {posts?.map((post) => (
+              <div key={post.$id} className="p-2 w-1/4">
+                <PostCard {...post} />
+              </div>
+            ))}
+          </div>
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default Home;

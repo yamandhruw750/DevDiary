@@ -49,11 +49,11 @@ function Header() {
         <nav className="flex">
           <div className="mr-4">
             <Link to="/">
-            {/* Logo is temprory */}
+              {/* Logo is temprory */}
               <img src={logo} alt="" width={80} />
             </Link>
           </div>
-          <ul className="flex ml-auto">
+          <ul className="flex ml-auto items-center">
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name} className="px-1">
@@ -79,7 +79,7 @@ function Header() {
                 <LogoutBtn />
               </li>
             )}
-            <li className="px-1">
+            <li className="px-4">
               <ModeToggle />
             </li>
           </ul>
