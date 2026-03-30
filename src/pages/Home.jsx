@@ -46,30 +46,26 @@ function Home() {
   //It runs when logged in and no posts are there !!
   if (authStatus) {
     return (
-      <div className="w-full min-h-[60vh] flex items-center justify-center text-center">
-        <Container>
-          <h2 className="text-xl font-semibold">
-            No posts yet. Start writing your first post 🚀
-          </h2>
-        </Container>
-      </div>
+      <Container>
+        <h2 className="text-xl font-semibold">
+          No posts yet. Start writing your first post 🚀
+        </h2>
+      </Container>
     );
   }
 
   //It runs when logged in and posts are there !!
   if (!posts?.length === 0) {
     return (
-      <div className="w-full min-h-[60vh] flex items-center justify-center text-center">
-        <Container>
-          <div className="flex">
-            {posts?.map((post) => (
-              <div key={post.$id} className="p-2 w-1/4">
-                <PostCard {...post} />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </div>
+      <Container>
+        <div className="flex">
+          {posts?.map((post) => (
+            <div key={post.$id} className="p-2 w-1/4">
+              <PostCard {...post} />
+            </div>
+          ))}
+        </div>
+      </Container>
     );
   }
 }

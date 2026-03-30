@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useCallback, useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { RTE } from "../index";
@@ -15,7 +15,7 @@ export default function PostForm({ post }) {
         title: post?.title || "",
         slug: post?.slug || " ",
         content: post?.content || "",
-        status: post?.status || "active",
+        status: post?.status ?? true,
       },
     });
 
@@ -52,8 +52,6 @@ export default function PostForm({ post }) {
           userId: userData.$id,
         });
 
-        console.log(dbPost);
-
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
         }
@@ -75,7 +73,7 @@ export default function PostForm({ post }) {
   useEffect(() => {
     const subscription = watch((value, { name }) => {
       if (name === "title") {
-        setValue("slug", slugTransform(value.title, { shouldValidate: true }));
+        setValue("slug", slugTransform(value.title), { shouldValidate: true });
       }
     });
     return () => {
@@ -97,11 +95,6 @@ export default function PostForm({ post }) {
           placeholder="Slug"
           className="mb-4"
           {...register("slug", { required: true })}
-          onInput={(e) => {
-            setValue("slug", slugTransform(e.currentTarget.value), {
-              shouldValidate: true,
-            });
-          }}
         />
         <RTE
           label="Content :"
@@ -127,14 +120,23 @@ export default function PostForm({ post }) {
             />
           </div>
         )}
-        <Select
-          options={[
-            { label: "active", value: true },
-            { label: "inactive", value: false },
-          ]}
-          label="Status"
-          className="mb-4"
-          {...register("status", { required: true })}
+        <Controller
+          name="status"
+          control={control}
+          render={({ field }) => {
+            const options = [
+              { label: "active", value: true },
+              { label: "inactive", value: false },
+            ];
+
+            return (
+              <Select
+                options={options}
+                value={options.find((opt) => opt.value === field.value)}
+                onChange={(selected) => field.onChange(selected.value)}
+              />
+            );
+          }}
         />
         <Button
           type="submit"

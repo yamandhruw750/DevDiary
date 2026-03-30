@@ -34,7 +34,7 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <div>
         <Header />
-        <main className="grow">
+        <main className="grow w-full min-h-[60vh] flex items-center justify-center text-center">
           <Outlet />
         </main>
         <Footer />
