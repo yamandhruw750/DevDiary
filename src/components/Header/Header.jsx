@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../themetoggle";
+import logo from "../../assets/logo.gif";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -47,7 +48,10 @@ function Header() {
       <Container>
         <nav className="flex">
           <div className="mr-4">
-            <Link to="/">Logo</Link>
+            <Link to="/">
+            {/* Logo is temprory */}
+              <img src={logo} alt="" width={80} />
+            </Link>
           </div>
           <ul className="flex ml-auto">
             {navItems.map((item) =>
@@ -63,12 +67,11 @@ function Header() {
               ) : null,
             )}
             {authStatus && (
-              <li className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm">
+              <li className="flex gap-2 px-2.5">
+                <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm">
                   {userData?.name?.charAt(0).toUpperCase()}
                 </div>
-
-                <span className="text-sm">{userData?.name}</span>
+                <span className="text-base text-center">{userData?.name}</span>
               </li>
             )}
             {authStatus && (

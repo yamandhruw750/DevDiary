@@ -6,8 +6,8 @@ import store from "./store/store.js";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
-import { Protected, Login } from "./components/index";
-
+import { Protected } from "./components/index";
+import Login from "./pages/Login";
 import AddPost from "./pages/AddPost";
 import Signup from "./pages/Signup";
 import EditPost from "./pages/EditPost";
