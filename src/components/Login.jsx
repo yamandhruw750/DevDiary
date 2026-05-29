@@ -44,7 +44,7 @@ function Login() {
     }
   };
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="w-full py-8 mt-4 text-center flex items-center justify-center">
       <form onSubmit={handleSubmit(login)}>
         <Card className="w-sm shadow-2xl p-16">
           <CardHeader>
@@ -77,12 +77,11 @@ function Login() {
               />
             </Field>
             <Button className="w-full">Sign In</Button>
-            <p className="text-center">
+            <p className="flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
               Don't have an account?
-              <Link to={"/signup"}>
-                {" "}
-                <Button variant="outline">Sign Up</Button>
-              </Link>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/signup">Sign Up</Link>
+              </Button>
             </p>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
           </CardContent>

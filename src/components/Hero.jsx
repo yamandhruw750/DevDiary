@@ -1,7 +1,9 @@
 import Container from "./container/Container";
 import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  const navigate = useNavigate();
   return (
     <div className="w-full py-8 mt-4 text-center">
       <Container>

@@ -38,7 +38,6 @@ export default function PostForm({ post }) {
 
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
-        D;
       }
     } else {
       const file = await service.uploadFile(data.image[0]);

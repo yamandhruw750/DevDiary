@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
 import { Header, Footer } from "./components/index";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     const checkUser = async () => {
@@ -35,7 +36,9 @@ function App() {
       <div>
         <Header />
         <main className="grow w-full min-h-[60vh] flex items-center justify-center text-center">
-          <Outlet />
+          <div key={location.pathname} className="route-transition w-full">
+            <Outlet />
+          </div>
         </main>
         <Footer />
       </div>

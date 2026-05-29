@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../themetoggle";
-import logo from "../../assets/logo.gif";
+import logo from "../../assets/logo.svg";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);

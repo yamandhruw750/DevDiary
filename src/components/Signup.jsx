@@ -81,12 +81,11 @@ function Signup() {
             <Button type="submit" className="w-full">
               Create Account
             </Button>
-            <p className="text-center">
+            <p className="flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
               Already have an account?
-              <Link to={"/login"}>
-                {" "}
-                <Button variant="outline">Sign In</Button>
-              </Link>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/login">Sign In</Link>
+              </Button>
             </p>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
           </CardContent>

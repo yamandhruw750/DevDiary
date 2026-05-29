@@ -43,7 +43,7 @@ export class AuthService {
         password: password,
       });
     } catch (error) {
-      throw error;
+      console.log("Error", error.message);
     }
   }
 

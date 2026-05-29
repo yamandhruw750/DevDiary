@@ -8,15 +8,29 @@ export function ModeToggle() {
   const isDark = theme === "dark";
 
   return (
-    <div
+    <Button
+      type="button"
+      variant="ghost"
+      size="icon"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className={`flex items-center cursor-pointer transition-transform duration-500 ${isDark ? "rotate-90" : "rotate-0"}`}
+      className="relative overflow-hidden rounded-full transition-transform duration-300 hover:rotate-12"
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      {isDark ? (
-        <Sun className="h-6 w-6 text-yellow-400 rotate-0 transition-all" />
-      ) : (
-        <Moon className="h-6 w-6 text-blue-400 rotate-0 transition-all" />
-      )}
-    </div>
+      <Sun
+        className={`absolute h-5 w-5 text-yellow-400 transition-all duration-500 ease-out ${
+          isDark
+            ? "rotate-0 scale-100 opacity-100"
+            : "-rotate-90 scale-0 opacity-0"
+        }`}
+      />
+      <Moon
+        className={`absolute h-5 w-5 text-blue-400 transition-all duration-500 ease-out ${
+          isDark
+            ? "rotate-90 scale-0 opacity-0"
+            : "rotate-0 scale-100 opacity-100"
+        }`}
+      />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
   );
 }
