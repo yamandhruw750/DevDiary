@@ -303,7 +303,7 @@ function Home() {
                       <div className="absolute left-[-1.65rem] h-4 w-4 rounded-full bg-linear-to-br from-purple-400 to-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.45)]" />
                       <div className="min-w-24 text-sm font-medium text-muted-foreground">{item.day}</div>
                       <div className="flex-1 rounded-2xl border border-border bg-background/80 px-5 py-4 text-foreground shadow-sm">{item.title}</div>
-                      {index < timeline.length - 1 ? <ArrowRight className="h-4 w-4 text-muted-foreground" /> : null}
+                      {index < timeline.length ? <ArrowRight className="h-4 w-4 text-muted-foreground" /> : null}
                     </div>
                   ))}
                 </div>
