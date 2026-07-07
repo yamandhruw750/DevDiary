@@ -33,15 +33,13 @@ function App() {
 
   return !loading ? (
     <div className="min-h-screen flex flex-col">
-      <div>
-        <Header />
-        <main className="grow w-full min-h-[60vh] flex items-center justify-center text-center">
-          <div key={location.pathname} className="route-transition w-full">
-            <Outlet />
-          </div>
-        </main>
-        <Footer />
-      </div>
+      {location.pathname !== "/" && <Header />}
+      <main className="grow w-full min-h-[60vh] flex items-center justify-center text-center">
+        <div key={location.pathname} className="route-transition w-full">
+          <Outlet />
+        </div>
+      </main>
+      {location.pathname !== "/" && <Footer />}
     </div>
   ) : null;
 }

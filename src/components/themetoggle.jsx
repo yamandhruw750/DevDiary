@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/themeProvider";
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   return (
     <Button
@@ -15,6 +15,7 @@ export function ModeToggle() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="relative overflow-hidden rounded-full transition-transform duration-300 hover:rotate-12"
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      aria-pressed={theme === "dark" || (theme === "system" && isDark)}
     >
       <Sun
         className={`absolute h-5 w-5 text-yellow-400 transition-all duration-500 ease-out ${

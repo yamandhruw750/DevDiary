@@ -1,75 +1,64 @@
 import { Separator } from "../ui/separator";
-import {
-  GitHubLogoIcon,
-  TwitterLogoIcon,
-  LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { GitHubLogoIcon, TwitterLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 
 function Footer() {
   return (
-    <footer className="border-t bg-background shadow rounded">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
+    <footer className="border-t border-border bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1.1fr]">
           <div>
-            <h2 className="text-xl font-bold">DevDiary</h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              DevDiary is a platform where developers share knowledge, tutorials
-              and coding experiences.
+            <div className="text-xl font-semibold tracking-[-0.04em]">DevDiary</div>
+            <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
+              A premium workspace for developers to document learning, ship projects, and build a public portfolio with clarity.
             </p>
           </div>
-
-          {/* Product */}
           <div>
-            <h3 className="font-semibold mb-4">Product</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="hover:text-foreground cursor-pointer">Blogs</li>
-              <li className="hover:text-foreground cursor-pointer">Write</li>
-              <li className="hover:text-foreground cursor-pointer">
-                Categories
-              </li>
-              <li className="hover:text-foreground cursor-pointer">Authors</li>
+            <h3 className="text-sm font-medium text-foreground">Product</h3>
+            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <li>Markdown Editor</li>
+              <li>Project Showcase</li>
+              <li>Progress Tracking</li>
+              <li>Achievement Badges</li>
             </ul>
           </div>
-
-          {/* Resources */}
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="hover:text-foreground cursor-pointer">Docs</li>
-              <li className="hover:text-foreground cursor-pointer">
-                Community
-              </li>
-              <li className="hover:text-foreground cursor-pointer">
-                Help Center
-              </li>
-              <li className="hover:text-foreground cursor-pointer">
-                Privacy Policy
-              </li>
+            <h3 className="text-sm font-medium text-foreground">Resources</h3>
+            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <li>Documentation</li>
+              <li>Guides</li>
+              <li>Templates</li>
+              <li>Changelog</li>
             </ul>
           </div>
-
-          {/* Social */}
           <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
-
-            <div className="flex gap-4 text-muted-foreground">
-              <GitHubLogoIcon className="cursor-pointer hover:text-foreground" />
-              <TwitterLogoIcon className="cursor-pointer hover:text-foreground" />
-              <LinkedInLogoIcon className="cursor-pointer hover:text-foreground" />
+            <h3 className="text-sm font-medium text-foreground">Community</h3>
+            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <li>Explore Posts</li>
+              <li>Creators</li>
+              <li>Open Source</li>
+              <li>Discord</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-foreground">Newsletter</h3>
+            <p className="mt-4 text-sm leading-6 text-muted-foreground">Get product updates and thoughtful dev writing once a month.</p>
+            <div className="mt-4 flex gap-2">
+              <Input className="h-11 rounded-full border-border bg-background placeholder:text-muted-foreground dark:bg-card/70" placeholder="Email address" />
+              <Button className="h-11 rounded-full bg-foreground px-5 text-background hover:bg-foreground/90">Join</Button>
             </div>
-
-            <p className="mt-4 text-sm text-muted-foreground">
-              Follow us for updates and new articles.
-            </p>
+            <div className="mt-6 flex items-center gap-4 text-muted-foreground">
+              <GitHubLogoIcon />
+              <TwitterLogoIcon />
+              <LinkedInLogoIcon />
+            </div>
           </div>
         </div>
-
-        <Separator className="my-8" />
-
-        <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground">
+        <Separator className="my-10 bg-border" />
+        <div className="flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} DevDiary. All rights reserved.</p>
-          <p>Built with React, Tailwind & shadcn/ui</p>
+          <p>Built with React, Tailwind CSS, shadcn/ui, and Lucide icons.</p>
         </div>
       </div>
     </footer>
