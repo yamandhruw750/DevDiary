@@ -14,7 +14,7 @@ export default function Protected({ children, authentication = true }) {
         navigate("/login");
       }
     } else {
-      // Public route (login/signup pages)
+      // Public route (login page — guests only)
       if (authStatus) {
         navigate("/");
       }

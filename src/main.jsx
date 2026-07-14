@@ -4,12 +4,11 @@ import "./index.css";
 import App from "./App.jsx";
 import store from "./store/store.js";
 import { Provider } from "react-redux";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import { Protected } from "./components/index";
 import Login from "./pages/Login";
 import AddPost from "./pages/AddPost";
-import Signup from "./pages/Signup";
 import EditPost from "./pages/EditPost";
 
 import Post from "./pages/Post";
@@ -37,11 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: (
-          <Protected authentication={false}>
-            <Signup />
-          </Protected>
-        ),
+        element: <Navigate to="/login?mode=signup" replace />,
       },
       {
         path: "/all-posts",

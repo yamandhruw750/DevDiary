@@ -393,7 +393,7 @@ function Home() {
             <div className="rounded-[32px] border border-border bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.12),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.10),transparent_35%),hsl(var(--background))] px-6 py-16 text-center md:px-12 dark:bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.28),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.18),transparent_35%),#0b1020]">
               <h2 className="mx-auto max-w-3xl text-3xl font-semibold tracking-[-0.05em] text-foreground md:text-5xl">Start documenting your developer journey today.</h2>
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-                <Button size="lg" className="h-14 rounded-full bg-foreground px-7 text-background hover:bg-foreground/90" onClick={() => navigate("/signup")}>Get Started</Button>
+                <Button size="lg" className="h-14 rounded-full bg-foreground px-7 text-background hover:bg-foreground/90" onClick={() => navigate("/login?mode=signup")}>Get Started</Button>
                 <Button size="lg" variant="outline" className="h-14 rounded-full border-border bg-background px-7 text-foreground hover:bg-muted" onClick={() => navigate("/docs")}>Read Documentation</Button>
               </div>
             </div>

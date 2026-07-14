@@ -57,7 +57,7 @@ function Header() {
               Login
             </Button>
           )}
-          <Button className="rounded-full bg-linear-to-r from-purple-500 via-indigo-500 to-cyan-500 px-5 text-white shadow-[0_10px_30px_rgba(99,102,241,0.35)] hover:opacity-95" onClick={() => navigate(authStatus ? "/add-post" : "/signup")}>
+          <Button className="rounded-full bg-linear-to-r from-purple-500 via-indigo-500 to-cyan-500 px-5 text-white shadow-[0_10px_30px_rgba(99,102,241,0.35)] hover:opacity-95" onClick={() => navigate(authStatus ? "/add-post" : "/login?mode=signup")}>
             {authStatus ? "New Post" : "Get Started"}
             <ChevronRight className="ml-1 h-4 w-4" />
           </Button>
